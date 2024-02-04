@@ -129,28 +129,28 @@ onBeforeMount(async () => {
     priceHistory.value = priceHistoryResponse.data
     coin.value = coinResponse.data.coin;
 
-    // updateIntervalCoinPrice.value = setInterval(async () => {
-    //   try {
-    //     const response = await fetchCoinPrice(route.params.uuid)
-    //     coinPrice.value = response.data.price
-    //     priceIncreased.value = coinPrice.value > coin.value.price ? true : false
-    //     if (coin.value.price !== coinPrice.value) {
-    //       coin.value.price = coinPrice.value
-    //     }
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // }, 10000);
+    updateIntervalCoinPrice.value = setInterval(async () => {
+      try {
+        const response = await fetchCoinPrice(route.params.uuid)
+        coinPrice.value = response.data.price
+        priceIncreased.value = coinPrice.value > coin.value.price ? true : false
+        if (coin.value.price !== coinPrice.value) {
+          coin.value.price = coinPrice.value
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }, 10000);
 
-    // updateIntervalChartValues.value = setInterval(async () => {
-    //   try {
-    //     const response = await fetchCoinPriceHistoryTime(route.params.uuid, initialFocus.value)
-    //     priceHistory.value = response.data
-    //     updateChart()
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // }, 15000);
+    updateIntervalChartValues.value = setInterval(async () => {
+      try {
+        const response = await fetchCoinPriceHistoryTime(route.params.uuid, initialFocus.value)
+        priceHistory.value = response.data
+        updateChart()
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }, 15000);
 
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -160,8 +160,8 @@ onBeforeMount(async () => {
 });
 
 onBeforeUnmount(() => {
-  // clearInterval(updateIntervalCoinPrice.value);
-  // clearInterval(updateIntervalChartValues.value)
+  clearInterval(updateIntervalCoinPrice.value);
+  clearInterval(updateIntervalChartValues.value)
 });
 ChartJS.register(
   CategoryScale,

@@ -72,14 +72,14 @@ onBeforeMount(async () => {
     const offset = (currentPage.value - 1) * 100
     const response = await fetchCoins(offset);
     coins.value = response.data.coins
-    // updateIntervalCoins.value = setInterval(async () => {
-    //   try {
-    //     const response = await fetchCoinsByLimit(coins.value.length)
-    //     coins.value = response.data.coins
-    //   } catch (error) {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // }, 30000);
+    updateIntervalCoins.value = setInterval(async () => {
+      try {
+        const response = await fetchCoinsByLimit(coins.value.length)
+        coins.value = response.data.coins
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }, 30000);
   } catch (error) {
     console.error('Error fetching data:', error);
   } finally {
@@ -89,7 +89,7 @@ onBeforeMount(async () => {
 })
 
 onBeforeUnmount(() => {
-  // clearInterval(updateIntervalCoins.value)
+  clearInterval(updateIntervalCoins.value)
   window.removeEventListener('scroll', () => {
     trackScrollY()
   })

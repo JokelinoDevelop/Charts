@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router';
 import { getRandomGradient, formatPrice, formatNumber, generate24HourLabels } from '@/services/utilityFunctions.js';
 import { options } from '@/services/chartOptions.js'

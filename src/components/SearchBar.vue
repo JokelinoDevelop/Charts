@@ -6,24 +6,43 @@
       </span>
       <input type="text"
         class="w-full text-xl bg-darkBackground py-3 rounded-full px-6 outline-none border-2 border-transparent focus:border-grayOverlay transition-all duration-200"
-        placeholder="Search" @focus="handleInputFocus" @blur="handleInputBlur"
-        @input="debouncedFilterCoins($event.target.value)" />
+        placeholder="Search" @focus="handleInputFocus" @blur="handleInputBlur" @input="debouncedFilterCoins(inputValue)"
+        v-model="inputValue" />
     </div>
-    <!-- <Suspense>
-      <template #default>
-        <div class="bg-red-500 min-h-[6.5rem] -translate-y-6 w-full absolute flex justify-center items-center">
+
+    <template v-if="inputValue">
+      <div v-if="coins && coins.length > 0">
+        <div
+          class="bg-darkBackground translate-y-[1rem] absolute max-w-[30rem] w-full grid gap-2 py-4 border-2 border-lightPurple">
           <div v-for="coin in coins" :key="coin.uuid">
-            {{ coin }}
+            <RouterLink :to="{
+              name: 'CoinDetails',
+              params: {
+                uuid: coin.uuid,
+              },
+              query: {
+                name: coin.name,
+              },
+            }">
+              <CoinSearch :name="coin.name" :price="coin.price" :symbol="coin.symbol" :icon="coin.iconUrl" />
+            </RouterLink>
+
           </div>
         </div>
-      </template>
+      </div>
+      <div v-else-if="loading"
+        class="h-[4rem] translate-y-[1rem] flex absolute w-full justify-center items-center bg-darkBackground border-2 border-lightPurple">
+        <!-- Display loading spinner or message while fetching data -->
+        <FwbSpinner color="purple" size="8" />
+      </div>
+      <div v-else
+        class="h-[4rem] translate-y-[1rem] flex absolute w-full justify-center items-center bg-darkBackground  border-2 border-lightPurple">
+        <!-- Display a message when no coins are found -->
+        <p class="text-white font-[700]">No coins found.</p>
+      </div>
+    </template>
 
-      <template #fallback>
-        <div class="bg-red-500 min-h-[6.5rem] -translate-y-6 w-full absolute flex justify-center items-center">
-          <FwbSpinner color="purple" size="8" class="mt-4" />
-        </div>
-      </template>
-    </Suspense> -->
+
 
   </div>
 </template>
@@ -31,10 +50,13 @@
 <script setup>
 import { ref } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
-import { FwbSpinner } from 'flowbite-vue';
 import { fetchCoinsBySearch } from '@/services/ApiService.js'
+import CoinSearch from '@/components/CoinSearch.vue';
+import { FwbSpinner } from 'flowbite-vue'
 
-const loading = ref(true)
+const loading = ref(false)
+
+const inputValue = ref(null)
 
 const coins = ref(null)
 
