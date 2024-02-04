@@ -16,10 +16,10 @@
       <!-- Menu Items -->
       <div class="flex justify-end text-right text-xl">
         <div class="mt-4 flex flex-col gap-6">
-          <router-link to="/" class="nav-link">Home</router-link>
-          <router-link to="/coins" class="nav-link">Cryptocurrencies</router-link>
-          <router-link to="/exchanges" class="nav-link">Exchanges</router-link>
-          <router-link to="/contact" class="nav-link">Contact</router-link>
+          <router-link to="/" class="nav-link" @click.prevent="closeMenu">Home</router-link>
+          <router-link to="/coins" class="nav-link" @click.prevent="closeMenu">Cryptocurrencies</router-link>
+          <router-link to="/exchanges" class="nav-link" @click.prevent="closeMenu">Exchanges</router-link>
+          <router-link to="/contact" class="nav-link" @click.prevent="closeMenu">Contact</router-link>
         </div>
       </div>
     </div>
@@ -36,18 +36,10 @@
 </template>
 
 <script setup>
-import { watch } from 'vue'
-import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menuStore.js';
 import { storeToRefs } from 'pinia';
 
 const store = useMenuStore();
 const { closeMenu, toggleMenu } = store;
 const { isMenuOpen } = storeToRefs(store);
-
-const route = useRoute()
-
-watch(() => route.fullPath, () => {
-  closeMenu()
-})
 </script>

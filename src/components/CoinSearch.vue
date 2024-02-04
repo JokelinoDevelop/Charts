@@ -2,15 +2,15 @@
   <div class="px-4 flex items-center justify-between text-white hover:bg-lightPurple transition-all duration-400">
 
     <div class="flex items-center gap-6">
-      <img :src="icon" alt="" class="max-w-[2rem]">
+      <img :src="icon" alt="" class="max-w-[1.5rem] sm:max-w-[2rem]">
 
       <div>
-        <p class="w-[12ch] text-lg font-[700]">{{ name }}</p>
+        <p class="w-[12ch] text-sm sm:text-lg font-[700]">{{ name }}</p>
         <p class="text-sm">{{ symbol }}</p>
       </div>
     </div>
 
-    <p class="font-[700]">$ {{ formatPrice(price) }}</p>
+    <p class="font-[700] text-[0.8rem] sm:text-md">$ {{ formatPrice(price) }}</p>
 
   </div>
 </template>
