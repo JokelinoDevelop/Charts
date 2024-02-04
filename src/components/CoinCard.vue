@@ -25,7 +25,7 @@
     </div>
 
     <div class="flex items-center justify-between mt-2 mb-1 lg:text-center">
-      <p :key="coin.price" class="text-[1.5rem] text-white"
+      <p :key="coin.price" class="text-xl sm:text-2xl text-white"
         :class="{ 'price-increased': isPriceIncreased, 'price-decreased': !isPriceIncreased }">$ {{
           formatPrice((coin.price)) }}</p>
       <div class="border px-3 py bg-darkBackground rounded-full">

@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="px-4 flex items-center justify-between text-white hover:bg-white/50 hover:bg-lightPurple transition-all duration-400">
+  <div class="px-4 flex items-center justify-between text-white hover:bg-lightPurple transition-all duration-400">
 
     <div class="flex items-center gap-6">
       <img :src="icon" alt="" class="max-w-[2rem]">

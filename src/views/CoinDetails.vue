@@ -8,25 +8,37 @@
       <GoBackButton />
 
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center mx-auto sm:mx-0 sm:justify-start gap-2 sm:gap-4 ">
           <div class="max-w-[2.5rem]">
             <img :src="coin.iconUrl" alt="">
           </div>
-          <p class="text-xl">{{ coin.name }}</p>
+          <p class="text-lg sm:text-xl">{{ coin.name }}</p>
           <p>{{ coin.symbol }}</p>
 
-          <div class="border px-3 py bg-darkBackground rounded-full">
+          <div class="hidden sm:block border px-3 bg-darkBackground rounded-full">
             <p class="text-sm text-white font-[700]"># {{ coin.rank }}</p>
           </div>
         </div>
 
-        <p class="text-xl font-[500]" :key="coin.price"
+        <p class="hidden sm:block text-md sm:text-xl font-[500]" :key="coin.price"
           :class="{ 'price-increased': priceIncreased, 'price-decreased ': !priceIncreased }">
           $ {{
             formatPrice(coin.price) }}
         </p>
 
       </div>
+      <div class="sm:hidden flex items-center justify-center gap-3  mt-4">
+        <div class="border px-3 bg-darkBackground rounded-full">
+          <p class="text-sm text-white font-[700]"># {{ coin.rank }}</p>
+        </div>
+        <p class="text-md sm:text-xl font-[500]" :key="coin.price"
+          :class="{ 'price-increased': priceIncreased, 'price-decreased ': !priceIncreased }">
+          $ {{
+            formatPrice(coin.price) }}
+        </p>
+      </div>
+
+
       <hr class="my-4 border border-lightPurple">
 
       <CoinSummary :coin="coin" />
@@ -51,7 +63,7 @@
           </div>
 
           <div
-            class="flex mx-auto max-w-[28rem] items-center justify-between gap-2 px-2 lg:px-6 py-2 mt-4 bg-cardBackground rounded-xl border border-lightPurple transition-all duration-300">
+            class="flex flex-wrap sm:flex-nowrap justify-center mx-auto max-w-[28rem] items-center sm:justify-between gap-2 px-2 lg:px-6 py-2 mt-4 bg-cardBackground rounded-xl border border-lightPurple transition-all duration-300">
             <button v-for="period in periods" :key="period" :value='period'
               class="cursor-pointer px-2 hover:bg-darkPurple rounded-lg transition-all duration-300"
               :class="{ 'bg-lightPurple': initialFocus === period }" @click="fetchNewPriceByPeriod($event.target.value)">

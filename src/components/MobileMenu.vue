@@ -36,12 +36,18 @@
 </template>
 
 <script setup>
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menuStore.js';
 import { storeToRefs } from 'pinia';
 
 const store = useMenuStore();
 const { closeMenu, toggleMenu } = store;
 const { isMenuOpen } = storeToRefs(store);
-</script>
 
-<style scoped></style>
+const route = useRoute()
+
+watch(() => route.fullPath, () => {
+  closeMenu()
+})
+</script>
