@@ -10,7 +10,7 @@
       </div>
 
       <div class="absolute right-4 bottom-4 cursor-pointer" @click.stop="toggleFavorite(coin)">
-        <img :src="isFavorite ? 'heart-solid.svg' : 'heart-regular.svg'" alt=""
+        <img :src="isFavorite ? '/heart-solid.svg' : '/heart-regular.svg'" alt=""
           class="w-[1.5rem] md:w-[1.8rem] lg:w-[2rem]">
       </div>
 

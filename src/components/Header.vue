@@ -18,7 +18,7 @@
 
     <div class="lg:hidden flex gap-3 items-center">
       <RouterLink :to="{ name: 'Favorites' }" class="cursor-pointer relative">
-        <img src="heart-regular.svg" class="w-[1.5rem]">
+        <img src="/heart-regular.svg" class="w-[1.5rem]">
       </RouterLink>
 
       <MobileMenu />
