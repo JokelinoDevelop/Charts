@@ -14,10 +14,10 @@
             <router-link to="/coins" class="nav-link">Cryptocurrencies</router-link>
           </li>
           <li>
-            <router-link to="/exchanges" class="nav-link">Exchanges</router-link>
+            <router-link to="/favorites" class="nav-link">Favorites</router-link>
           </li>
           <li>
-            <router-link to="/news" class="nav-link">News</router-link>
+            <router-link to="/contact" class="nav-link">Contact</router-link>
           </li>
         </ul>
       </div>

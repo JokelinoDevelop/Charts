@@ -9,6 +9,11 @@
         <img :src="coin.iconUrl" alt="" class="w-[2.5rem] h-[2.5rem] relative" loading="lazy">
       </div>
 
+      <div class="absolute right-4 bottom-4 cursor-pointer" @click.stop="toggleFavorite(coin)">
+        <img :src="isFavorite ? 'heart-solid.svg' : 'heart-regular.svg'" alt=""
+          class="w-[1.5rem] md:w-[1.8rem] lg:w-[2rem]">
+      </div>
+
       <div class="flex items-center gap-4 text-grayOverlay">
         <p class="text-[1.rem]">{{ coin.symbol }}</p>
         <img src="@/assets/images/left-right-arrow.svg" alt="" loading="lazy">
@@ -42,13 +47,13 @@
     <hr class="my-4 border border-lightPurple">
 
     <div class="flex justify-between items-center">
-      <span class="text-lg font-[500]">$ {{ formatPrice((Math.max(...sparklineValues))) }}</span>
+      <span class="text-white text-lg font-[500]">$ {{ formatPrice((Math.max(...sparklineValues))) }}</span>
     </div>
 
 
     <Line :data="chartData" :options="options" />
 
-    <span class="text-lg font-[500]">$ {{ formatPrice((Math.min(...sparklineValues))) }}</span>
+    <span class="text-white text-lg font-[500]">$ {{ formatPrice((Math.min(...sparklineValues))) }}</span>
 
   </div>
 </template>
@@ -70,6 +75,8 @@ import {
   Legend
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
+import { storeToRefs } from 'pinia'
+import { useFavoritesStore } from '@/stores/favoritesStore';
 
 ChartJS.register(
   CategoryScale,
@@ -167,6 +174,13 @@ const navigateToCoinDetails = () => {
     },
   });
 };
+
+const store = useFavoritesStore()
+
+const { toggleFavorite } = store
+const { favorites } = storeToRefs(store)
+
+const isFavorite = computed(() => favorites.value.some(item => item.uuid === props.coin.uuid));
 
 </script>
 

@@ -150,6 +150,25 @@ const fetchCoinPriceHistoryTime = async (uuid, time) => {
   }
 }
 
+const fetchGlobalStats = async () => {
+  try {
+    const response = await axios.get('https://coinranking1.p.rapidapi.com/stats', {
+      params: {
+        referenceCurrencyUuid: 'yhjMzLPhuIDl'
+      },
+      headers: {
+        'X-RapidAPI-Key': `${import.meta.env.VITE_RAPID_API_KEY}`,
+        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
+      }
+    })
+    const data = response.data
+    return data
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}
+
 export {
   fetchCoins,
   fetchCoinsByLimit,
@@ -157,5 +176,6 @@ export {
   fetchCoinPriceHistory,
   fetchCoinPriceHistoryTime,
   fetchCoinsBySearch,
-  fetchCoinPrice
+  fetchCoinPrice,
+  fetchGlobalStats
 }

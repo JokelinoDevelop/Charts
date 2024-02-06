@@ -18,6 +18,16 @@ const router = createRouter({
       name: 'CoinDetails',
       path: '/coin/:uuid',
       component: () => import('@/views/CoinDetails.vue')
+    },
+    {
+      name: 'Favorites',
+      path: '/favorites',
+      component: () => import('@/views/Favorites.vue')
+    },
+    {
+      name: 'Contact',
+      path: '/contact',
+      component: () => import('@/views/Contact.vue')
     }
   ]
 })

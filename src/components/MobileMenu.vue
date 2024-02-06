@@ -5,7 +5,7 @@
       class="fixed top-0 right-0 h-full w-64 border-l-4 border-lightPurple bg-cardBackground shadow-lg z-50 p-4 transition-all duration-500"
       :class="{ '-translate-x-[0rem]': isMenuOpen, 'translate-x-[16rem]': !isMenuOpen }">
       <!-- Menu Content -->
-      <div class="flex justify-start border-b-2 pb-6">
+      <div class="flex justify-start border-b-2 pb-6 ">
         <!-- Close Button (X icon) -->
         <div class="mt-1 cursor-pointer hover:scale-[1.2] transition-all duration-300" @click="closeMenu">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@
         <div class="mt-4 flex flex-col gap-6">
           <router-link to="/" class="nav-link" @click.prevent="closeMenu">Home</router-link>
           <router-link to="/coins" class="nav-link" @click.prevent="closeMenu">Cryptocurrencies</router-link>
-          <router-link to="/exchanges" class="nav-link" @click.prevent="closeMenu">Exchanges</router-link>
+          <router-link to="/favorites" class="nav-link" @click.prevent="closeMenu">Favorites</router-link>
           <router-link to="/contact" class="nav-link" @click.prevent="closeMenu">Contact</router-link>
         </div>
       </div>

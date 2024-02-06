@@ -17,17 +17,22 @@
               </p>
             </div>
             <div class="flex flex-col gap-2 min-[400px]:flex-row">
-              <Button
-                class="bg-darkBackground text-white hover:bg-darkBackground/80 border-2 border-transparent hover:border-lightPurple">
-                <span>
-                  Get Started
-                </span>
-              </Button>
+              <RouterLink :to="{ name: 'Coins' }">
+                <Button
+                  class="bg-darkBackground w-full text-white hover:bg-darkBackground/80 border-2 border-transparent hover:border-lightPurple">
+                  <span>
+                    Get Started
+                  </span>
+                </Button>
+              </RouterLink>
 
-              <Button
-                class="bg-white text-darkBackground hover:bg-gray-100/80 border-2 border-transparent hover:border-lightPurple">
-                <span>Contact Us</span>
-              </Button>
+              <RouterLink :to="{ name: 'Contact' }">
+                <Button
+                  class="bg-white text-darkBackground w-full hover:bg-gray-100/80 border-2 border-transparent hover:border-lightPurple">
+                  <span>Contact Us</span>
+                </Button>
+              </RouterLink>
+
             </div>
           </div>
         </div>
