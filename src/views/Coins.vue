@@ -32,6 +32,7 @@
 
 <script setup>
 import { ref, onBeforeMount, onBeforeUnmount, onMounted } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
 import { fetchCoins, fetchCoinsByLimit } from '@/services/ApiService';
 import { useIntersectionObserver, useDebounceFn } from '@vueuse/core';
 import { FwbPagination } from 'flowbite-vue'
@@ -93,6 +94,16 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', () => {
     trackScrollY()
   })
+})
+
+onBeforeRouteLeave(async (from) => {
+  if (currentPage.value != 1 && from.name !== 'CoinDetails') {
+    currentPage.value = 1
+
+    const offset = (currentPage.value - 1) * 100
+    const response = await fetchCoins(offset);
+    coins.value = response.data.coins
+  }
 })
 
 const getCoinsOnScroll = async () => {

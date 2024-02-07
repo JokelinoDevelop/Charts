@@ -1,16 +1,16 @@
 <template>
-  <div v-if="favorites.length == 0" class=" flex flex-col gap-3 justify-center items-center text-white text-center px-3">
-    <img src="@/assets/images/no-favorites.png" alt="">
-    <p class="font-[700] tracking-wider text-xl">You haven't selected any favorites yet.</p>
-    <p>Start exploring and add your favorite items!</p>
+  <div class="flex flex-col items-center justify-center h-screen" v-if="favorites.length == 0">
+    <div class="flex -translate-y-1/2 flex-col gap-3 justify-center items-center text-white text-center px-3">
+      <img src="@/assets/images/no-favorites.png" alt="">
+      <p class="font-[700] tracking-wider text-xl">You haven't selected any favorites yet.</p>
+      <p>Start exploring and add your favorite items!</p>
 
-    <RouterLink :to="{ name: 'Coins' }">
-      <Button
-        class="mt-4 bg-white text-darkBackground max-w-[15rem] w-full hover:bg-gray-100/80 border-2 border-transparent hover:border-lightPurple">Go
-        To All Coins</Button>
-    </RouterLink>
-
-
+      <RouterLink :to="{ name: 'Coins' }">
+        <Button
+          class="mt-4 bg-white text-darkBackground max-w-[15rem] w-full hover:bg-gray-100/80 border-2 border-transparent hover:border-lightPurple">Go
+          To All Coins</Button>
+      </RouterLink>
+    </div>
   </div>
 
   <div v-else class="mx-6 py-6 grid gap-4 grid-cols-1 md:grid-cols-2 md:gap-x-8 lg:grid lg:grid-cols-4 lg:gap-6">
