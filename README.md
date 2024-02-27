@@ -4,7 +4,7 @@ Overview:
 This website provides a comprehensive platform for users to explore and track cryptocurrency listings in real-time. Built using Vue.js, Vite, and TailwindCSS, along with other complementary tools and libraries, it offers a modern and efficient user experience.
 
 Features Implemented:
-Infinite Scrolling and Pagination:
+Infinite Scrolling and Pagination
 
 Users can effortlessly navigate through extensive crypto listings thanks to the implementation of both infinite scrolling and pagination. This ensures a smooth browsing experience without overwhelming the interface with large datasets.
 Partial Caching with sessionStorage:
